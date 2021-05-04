@@ -21,10 +21,10 @@ void main() =>
 }*/
 
 class Transferencia {
-  final double valor;
-  final int numeroConta;
+  final double _valor;
+  final int _numeroConta;
 
-  Transferencia(this.valor, this.numeroConta);
+  Transferencia(this._valor, this._numeroConta);
 
 }
 
@@ -53,8 +53,8 @@ class ItemTransferencia extends StatelessWidget {
     return Card(
       child: ListTile(
         leading: Icon(Icons.monetization_on),
-        title: Text (_transferencia.valor.toString()),
-        subtitle: Text(_transferencia.numeroConta.toString()),
+        title: Text (_transferencia._valor.toString()),
+        subtitle: Text(_transferencia._numeroConta.toString()),
       )
 
     );

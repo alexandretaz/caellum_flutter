@@ -2,23 +2,26 @@ import 'package:flutter/material.dart';
 
 void main() =>
     runApp(
-        MaterialApp(
-          home: Scaffold(
-            body:ListarTransferencia(),
-            appBar: AppBar(
-              title: Text('Minhas Trasnferências')
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-      ),
-          )
-        )
+        byteBankApp()
     );
 
-/*class byteBankApp extends StatelessWidget
+class byteBankApp extends StatelessWidget
 {
-
-}*/
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+          body: ListarTransferencia(),
+          appBar: AppBar(
+              title: Text('Minhas Trasnferências')
+          ),
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add),
+          ),
+        )
+    );
+  }
+}
 
 class Transferencia {
   final double _valor;

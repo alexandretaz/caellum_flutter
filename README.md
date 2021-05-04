@@ -1,4 +1,4 @@
-# Curso de Flutter Caellum  
+# Curso de Flutter Caelum  
 
 Exercícios do Curso de Flutter da Caellum.
 

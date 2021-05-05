@@ -32,36 +32,8 @@ Widget build(BuildContext context) {
     ),
     body: Column(
         children:<Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 8.0),
-            child: TextField(
-              controller: _controladorCampoNumeroConta,
-              style: TextStyle(
-                  fontSize: 24.0
-              ),
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                  labelText: 'Número da conta',
-                  hintText: '0000'
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 2.0),
-            child: TextField(
-              controller: _controladorCampoValorTransferencia,
-              style: TextStyle(
-                  fontSize: 24.0
-              ),
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                  labelText: 'Valor da Transferência',
-                  hintText: '0.00',
-                  icon: Icon(Icons.monetization_on),
-              ),
-
-            ),
-          ),
+          CampoTexto('Número da Conta', '0000', _controladorCampoValorTransferencia),
+          CampoTexto('Valor da Transferência', '00.00', _controladorCampoNumeroConta,icone:Icons.monetization_on),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
           child: ElevatedButton(
@@ -71,6 +43,7 @@ Widget build(BuildContext context) {
               final int numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
               final double valor = double.tryParse(_controladorCampoValorTransferencia.text);
               if(numeroConta ==null || valor==null) {
+                debugPrint('Falha ao Gravar');
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                     content: const Text("Revise os campos",
@@ -96,6 +69,36 @@ Widget build(BuildContext context) {
     ]),
   );
 }
+}
+
+/****** Factory de Campos*******/
+
+class CampoTexto extends StatelessWidget {
+
+  String _rotulo, _dica;
+  IconData icone;
+
+  final TextEditingController _controlador;
+  CampoTexto(this._rotulo, this._dica, this._controlador,{this.icone});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0,horizontal: 2.0),
+      child: TextField(
+        controller: _controlador,
+        style: TextStyle(
+            fontSize: 24.0
+        ),
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          labelText: this._rotulo,
+          hintText: this._dica,
+          icon: icone!=null ? Icon(icone):null,
+        ),
+
+      ),
+    );
+  }
 }
 
 /*****************************************/
